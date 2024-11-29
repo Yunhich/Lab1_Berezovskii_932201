@@ -49,8 +49,5 @@ int main() {
     pthread_create(&producerThread, nullptr, producer, nullptr);
     pthread_create(&consumerThread, nullptr, consumer, nullptr);
 
-    pthread_join(producerThread, nullptr);
-    pthread_join(consumerThread, nullptr);
-
     return 0;
 }
