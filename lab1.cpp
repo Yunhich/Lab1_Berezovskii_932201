@@ -11,6 +11,7 @@ int ready = 0;
 // Функция-поставщик
 void* producer(void* arg) {
     while (true) {
+        sleep(1);
         pthread_mutex_lock(&lock);
 
         if (ready == 1) {
