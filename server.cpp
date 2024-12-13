@@ -9,6 +9,8 @@
 #include <sys/select.h>
 #include <vector>
 
+using namespace std;
+
 constexpr int PORT = 12345;
 constexpr int BACKLOG = 5;
 constexpr int BUF_SIZE = 1024;
@@ -85,7 +87,7 @@ int main() {
         if (ready == -1) {
             if (errno == EINTR) {
                 if (wasSigHup) {
-                    std::cout << "Received SIGHUP" << std::endl;
+                    cout << "Received SIGHUP" << endl;
                     wasSigHup = 0;
                 }
                 continue;
@@ -111,7 +113,7 @@ int main() {
                 client_fd = new_fd;
             } else {
                 close(new_fd);
-                std::cout << "Connection closed (already have a client)" << std::endl;
+                cout << "Connection closed" << endl;
             }
         }
 
@@ -120,9 +122,9 @@ int main() {
             ssize_t bytes_read = read(client_fd, buffer, sizeof(buffer));
 
             if (bytes_read > 0) {
-                std::cout << "Received " << bytes_read << " bytes from client" << std::endl;
+                cout << "Received " << bytes_read << " bytes from client" << endl;
             } else {
-                std::cout << "Client disconnected" << std::endl;
+                cout << "Client disconnected" << endl;
                 close(client_fd);
                 client_fd = -1;
             }
