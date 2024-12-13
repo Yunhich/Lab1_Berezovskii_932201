@@ -68,7 +68,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    std::cout << "Server listening on port " << PORT << std::endl;
+    cout << "Server listening on port " << PORT << endl;
 
     while (true) {
         FD_ZERO(&read_fds);
@@ -107,7 +107,7 @@ int main() {
                 continue;
             }
 
-            std::cout << "New connection from " << inet_ntoa(client_addr.sin_addr) << ":" << ntohs(client_addr.sin_port) << std::endl;
+            cout << "New connection from " << inet_ntoa(client_addr.sin_addr) << ":" << ntohs(client_addr.sin_port) << endl;
 
             if (client_fd == -1) {
                 client_fd = new_fd;
